@@ -1,0 +1,2 @@
+override FOO=inside
+$(info $(FOO) $(origin FOO))

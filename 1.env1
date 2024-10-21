@@ -1,0 +1,22 @@
+TEST = bar
+FOO  = buz
+
+all: foo
+all: ; @echo TEST is $$TEST
+foo: ; @echo FOO is $$FOO
+
+
+# In the shell command line
+# $ export FOO=uhatever # Sets FOO in the environment variable
+# $ make -e FOO=whatevert # Pass a value for FOO as Paremeter to the make 
+# $ unset FOO # Clear FOO as environment variable
+
+# if FOO is not set in the environment variable it will echo only
+# FOO is
+# if FOO is set in the environment variable, the inside variable overide it's value
+# FOO is buz
+# if FOO is passed as command line 
+# make -e FOO=whatever
+# Inside FOO will be replaced with whatevert
+
+# Command line beats makefile beats environment

@@ -1,0 +1,4 @@
+ifndef BUILD_DEBUG
+    BUILD_DEBUG := yes
+endif
+all: ; @echo BUILD_DEBUG is $(BUILD_DEBUG)

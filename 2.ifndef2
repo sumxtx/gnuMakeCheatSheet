@@ -1,0 +1,14 @@
+CFLAGS = -Wall 
+
+ifdef CSANITIZE
+    CFLAGS += -fsanitize=address -fsanitize=leak
+endif
+
+BUILD_DEBUG ?= yes
+
+.PHONY: all foo bar
+all: foo bar
+all: ;@echo BUILD_DEBUG is $(BUILD_DEBUG)
+
+foo: ; @echo CFLAGS is $(CFLAGS)
+bar: ; @echo $(CSANITIZE)
