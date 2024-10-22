@@ -1,0 +1,25 @@
+### Variables, Environment Variables and Overrides ### 1/2: Origin
+
+
+# on shell do:
+# export FOO=something
+# export BAR=test
+# export BAZ=test
+
+$(info FOO is: $(FOO))
+$(info FOO is: $(FOO) And its origin is: $(origin FOO))
+$(info $$HOME=$(HOME))
+
+# Override
+override FOO=something from inside the file, 
+$(info FOO is now "$(FOO)" and its origin is $(origin FOO))
+
+override FOO=inside
+$(info $(FOO) $(origin FOO))
+
+BAZ=test2
+$(info BAR is $(BAR) and its origin is $(origin BAR))
+$(info BAZ however is $(BAZ) and its origin is $(origin BAZ))
+
+.PHONY: all
+all: ; @echo Got it?

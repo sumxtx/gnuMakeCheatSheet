@@ -1,0 +1,34 @@
+### Variables, Environment Variables and Overrides ### 2/2: Precedence
+
+# Let's split in three steps:
+
+# First
+# FOO is not defined on the environment variable
+# $ > unset FOO
+# If FOO is not set in the environment variable it will echo only
+# FOO is
+
+# Second
+# FOO is defined on the environment variable
+# $ > export FOO=outside
+# if FOO is set in the environment variable, the inside variable overide it's value
+# FOO is buz
+
+# Third
+# FOO is set on the environment variable and we pass FOO as a parameter when calling make from the command line
+# $ make -e FOO=whatevert 	# Pass a value for FOO as Paremeter to the make 
+# FOO is whatevert
+
+# Conclusion:
+## Command line beats makefile beats environment
+
+TEST = bar
+FOO  = buz
+
+all: foo
+all: ; @echo TEST is $$TEST
+foo: ; @echo FOO is $$FOO
+
+
+
+

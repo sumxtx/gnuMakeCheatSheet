@@ -1,8 +1,0 @@
-# on shell do:
-# export FOO=test
-# export BAR=test
-
-
-BAR=test2
-$(info $(FOO) $(origin FOO))
-$(info $(BAR) $(origin BAR))
