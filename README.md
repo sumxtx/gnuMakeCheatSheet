@@ -1,4 +1,4 @@
-### The GNU Make Tool CheatSheet
+## The GNU Make Tool CheatSheet
 > Book: The GNU Make Book - Johan Graham-Cumming - No Starch Press
 
 Each file is intended to be "built"  
@@ -13,24 +13,28 @@ Example:
 ```
 
 
-### Variables, Environment Variables and Overrides ### 1/2: Origin
-Makefile00
-### Variables, Environment Variables and Overrides ### 2/2: Precedence
-Makefile01
-### Runtime Environment Variables vs Infile Environment Variables ###
-Makefile02
-### Target Specific Variables ###
-Makefile03
-### Variable Scopes, Target Specific Variables, Build Order### 1/3
-Makefile04
-### Variable Scopes, Target Specific Variables, Build Order### 2/3
-Makefile05
-### Variable Scopes, Target Specific Variables, Build Order### 3/3
-Makefile06
-### ifndef, ifdef, =?, ifeq, $(if,,)### 1/3
-Makefile07
-### ifndef, ifdef, =?, ifeq, $(if,,)### 2/3
-Makefile08
-### ifndef, ifdef, =?, ifeq, $(if,,)### 3/3
-Makefile09
-
+- Variables, Environment Variables and Overrides
+	- Makefile00
+	- Makefile01
+- Runtime Environment Variables vs Infile Environment Variables
+	- Makefile02
+- Target Specific Variables
+	- Makefile03
+- Variable Scopes, Target Specific Variables, Build Order
+	- Makefile04
+	- Makefile05
+	- Makefile06
+- ifndef, ifdef, =?, ifeq, $(if,,)
+	- Makefile07
+	- Makefile08
+	- Makefile09
+- Determine a required make feature
+    - Makefile10
+    - Makefile11
+- Logical Operators And, Or, Not, Xor, ...
+    - Makefile12
+    - Makefile13
+- Check for Commands with which
+    - Makefile14
+- Variable assigment := vs =
+    - Makefile15

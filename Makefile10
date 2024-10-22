@@ -1,6 +1,12 @@
+### Determine a required make feature
+
+
+.PHONY: all
+
 $(eval eval_available := T)
+
 ifneq ($(eval_available), T)
-$(error This Makefile only works with a Make program that supports $$(eval))
+	$(error This Makefile only works with a Make program that supports $$(eval))
 endif
 
 all: ; @echo $(eval_available)

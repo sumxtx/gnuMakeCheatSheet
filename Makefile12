@@ -1,0 +1,35 @@
+### User Defined Logical Operators ###
+
+
+EMPTY=
+VAR=$(EMPTY)
+
+make-truth = $(if $1, T)
+
+make-or = $(if $1$2,T)
+
+make-and = $(if $1,$(if $2, T))
+
+make-not = $(if $1,,T)
+
+make-nand = $(call not,$(call and,$1,$2)) nor = $(call not,$(call or,$1,$2))
+make-xor = $(call and,$(call or,$1,$2),$(call not,$(call and,$1,$2)))
+
+imake-nand = $(if $1,$(if $2,,T),T)
+imake-nor = $(if $1$2,,T)
+imake-xor = $(if $1,$(if $2,,T),$(if $2,T))
+
+.PHONY: all
+all: foo
+foo:
+	@echo $(call make-truth)
+	@echo $(call make-truth, True)
+	@echo $(call make-truth, $(EMPTY))
+	@echo $(call make-truth, $(VAR))
+	@echo OR: $(call make-or,,)
+	@echo OR: $(call make-or,True,)
+	@echo OR: $(call make-or,,True)
+	@echo AND: $(call make-and,True,True)
+	@echo AND: $(call make-and,,True)
+	@echo $(call make-not,)
+

@@ -1,0 +1,12 @@
+### Delayed Assignment Variable ### := vs =
+
+
+# Combining the best of both world
+# The shell will be evaluated only once, and doesn't happen if SHALIST is never used
+SHALIST = $(eval SHALIST := $(shell find . -name 'M*16' | xargs shasum)) $(SHALIST) 
+
+$(info Before use SHALIST is: $(value SHALIST))
+$(info SHALIST is: $(SHALIST))
+$(info After use SHALIST is: $(value SHALIST))
+
+all: ; @echo

@@ -1,0 +1,25 @@
+### Delayed Assignment Variable ### := vs =
+
+
+#The = defines a recursive variable, a variable value that is defined when it's
+# used, but everytime you use the variable in this case FOO, it's is called again
+# being computation expensive
+BAR = before
+FOO = $(BAR) the rain
+BAR = after
+
+# The := operator evaluates its right side immediately and uses the resulting 
+# value to se the value of a variable
+# They also have a single value determined the time the file is called
+# so that being said, if we call a make clear for example it will evaluated unnecesarily
+BAZ = before
+FOZ := $(BAZ) the rain
+BAZ = after 
+
+all: ; @echo $(FOO)
+	@echo $(FOZ)
+
+# So above, FOO value is called in the all recipe, after BAR has been reasigned
+# having the after value
+# and FOZ has it's value inmediately assigned having the before value
+

@@ -1,0 +1,21 @@
+### Have Command ###
+
+###HAVE_CURL := $(shell which thiscommandnotexist)
+###
+###ifndef HAVE_CURL
+###	$(error curl is mising)
+###endif
+###
+###
+###all: ; @echo
+
+.PHONY: all
+assert-command-present = $(if $(shell which $1),,$(error '$1' missing and needed for this build))
+
+
+all: ; @echo Do all...
+
+download: export _check = $(call assert-command-present, curl)
+download: ; @echo Download stuff...
+nodownload: export _check = $(call assert-command-present, curly)
+nodownload: ; @echo Download stuff...
