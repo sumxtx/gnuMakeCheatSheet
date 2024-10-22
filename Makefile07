@@ -1,0 +1,39 @@
+### ifndef, ifdef, =?, ifeq, $(if,,)### 1/3
+
+
+# ifndef
+# if a variable is not defined
+# 	do this
+
+ifndef BUILD_DEBUG
+    BUILD_DEBUG := yes
+endif
+
+# ifdef
+# if a variable is defined
+# 	do this
+
+CFLAGS = -Wall 
+
+ifdef CSANITIZE
+    CFLAGS += -fsanitize=address -fsanitize=leak
+endif
+
+# How to test this
+# First simply call make -f Makefile07, we got
+# BUILD_DEBUG is yes CFLAGS is -Wall CSANITIZE is
+# as BUILD_DEBUG is not defined and CSANITIZE is not defined
+
+# if later we call make -f Makefile07 -e CSANITIZE=yes, we got
+# BUILD_DEBUG is yes CFLAGS is -Wall -fsanitize=address -fsanitize=leak CSANITIZE is whatever
+# We will modify the value of CFLAGS as per the above idef statement
+# BUILD_DEBUG will still be yes
+
+# if we call
+# make -f Makefile07 -e CSANITIZE=whatever -e BUILD_DEBUG=this 
+# we will override the value of BUILD_DEBUG
+# BUILD_DEBUG is this CFLAGS is -Wall -fsanitize=address -fsanitize=leak CSANITIZE is whatever
+
+.PHONY: all foo bar
+all:
+all: ;@echo BUILD_DEBUG is $(BUILD_DEBUG) CFLAGS is $(CFLAGS) CSANITIZE is $(CSANITIZE)

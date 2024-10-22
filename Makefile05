@@ -1,0 +1,33 @@
+### Variable Scopes, Target Specific Variables, Build Order### 2/3
+
+
+# Here VAR is global scope, however we are defining all targets starting with b
+# to be starts with b
+# on the local and global scopes, and target specific variables
+# So causing a conflict on definitions, what will have preference?
+
+.PHONY: all foo bar baz car cucci
+b%: VAR = starts with b
+
+VAR = global scope
+
+all: foo bar car cucci
+all: ; @echo In $@ VAR is $(VAR)
+
+foo: ; @echo In $@ VAR is $(VAR)
+
+bar: VAR = local scope
+bar: baz
+bar: ; @echo In $@ VAR is $(VAR)
+
+baz: ; @echo In $@ VAR is $(VAR)
+
+# baz VAR is start with b
+# bar VAR is local scope
+# why, i guess because inline declaration has preferece over pattern %
+
+c%: VAR = starts with c
+car: VAR = likil skipi
+car: ; @echo In $@ VAR is $(VAR)
+
+cucci: ; @echo In $@ VAR is $(VAR)

@@ -1,0 +1,21 @@
+### ifndef, ifdef, =?, ifeq, $(if,,)### 2/3
+### Nesting
+
+# If defined DEBUG
+# 	If not defined DEBUG_FLAGS, define DEBUG_FLAGS as -g
+ifdef DEBUG
+    DEBUG_FLAGS ?= -g
+else
+	DEBUG_FLAGS = none
+endif
+
+.PHONY: all foo bar
+all : foo
+all : ; @echo DEBUG is $(DEBUG) DEBUG_FLAGS is $(DEBUG_FLAGS)
+
+
+# make -f Makefile09
+# DEBUG is DEBUG_FLAGS is none
+
+# make -f Makefile09 -e DEBUG=yes
+# DEBUG is yes DEBUG_FLAGS is -g

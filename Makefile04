@@ -1,0 +1,38 @@
+### Variable Scopes, Target Specific Variables, Build Order### 1/3
+
+
+# Make follows the standard "depth-first, left-to-right search pattern
+# It means it start building from left to right going to the deepest level first
+
+# Here VAR is global scope, however we are defining the VAR in bar to be local scope
+# Then the make will try to make all, but all requirements on foo and bar
+# So it will try to make foo first, as it has no requirements so it will be made
+# then it will try to make bar, but bar requires baz, so it will try to make baz
+# In baz as it is required by bar, it will heredate the VAR = local scope
+# After making baz, as it finishes the requirements of bar, it will make bar
+# So as all requirements of all are satisfied, it will finally build all
+
+.PHONY: all foo bar baz
+
+VAR = global scope
+
+all: foo bar
+
+# first callee
+# last built
+all: ; @echo In $@ VAR is $(VAR)
+
+# second callee
+# first build, no requirements
+foo: ; @echo In $@ VAR is $(VAR)
+
+bar: VAR = local scope
+bar: baz
+
+# third callee, calls requirements
+# third built 
+bar: ; @echo In $@ VAR is $(VAR)
+
+# fourth calee 
+# second built, satisfies all requirements to 
+baz: ; @echo In $@ VAR is $(VAR)

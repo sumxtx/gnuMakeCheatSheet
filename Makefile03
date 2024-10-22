@@ -1,0 +1,12 @@
+### Target Specific Variables ###
+
+# Here no matter what the value of the FOO in the environment variable
+# or the value of FOO inside, in the rule all FOO will be just for all
+# only overrided by the -e
+
+FOO = pee
+export FOO=bar
+
+all: export FOO=just for all
+
+all: ; @echo FOO is $$FOO

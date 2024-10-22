@@ -1,3 +1,12 @@
+### Runtime Environment Variables vs Infile Environment Variables ###
+
+
+# in the shell 
+# export FOO=shell
+# In some make versions the variable that was defined at the calling 
+# of the program will have precedence over the value defined in the file
+# this is considered a bug
+
 export FOO=bar
 
 $(info $(shell printenv | grep FOO))

@@ -1,0 +1,16 @@
+### Variable Scopes, Target Specific Variables, Build Order### 3/3
+
+
+lib1_SRCS := $(wildcard lib1/*.c)
+lib2_SRCS := $(wildcard lib2/*.c)
+
+lib/special.o: CPPFLAGS += -Wcomment
+lib/%.o: CPPFLAGS += -fast
+
+lib1_OBJS := $(lib1_SRCS:.c=.o)
+lib2_OBJS := $(lib2_SRCS:.c=.o)
+
+.PHONY: all
+all: $(lib1_OBJS) $(lib2_OBJS)
+
+%.o: $.c; @$(COMPILE.C) -o $@ $<

@@ -1,8 +1,0 @@
-ifdef DEBUG
-    BUILD_DEBUG ?= -g
-endif
-
-.PHONY: all foo bar
-all : foo
-all : ; @echo BUILD_DEBUG is $(BUILD_DEBUG)
-
