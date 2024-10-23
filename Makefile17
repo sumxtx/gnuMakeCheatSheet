@@ -1,0 +1,24 @@
+MY_LIST = a program for directed compilation
+$(info The first word is $(firstword $(MY_LIST)))
+$(info The number of words is $(words $(MY_LIST)))
+$(info The 4th word is $(word 4, $(MY_LIST)))
+
+lastword = $(if $1, $(word $(words $1), $1))
+$(info The Last word is $(call lastword,$(MY_LIST)))
+
+notfirst = $(wordlist 2,$(words $1),$1)
+$(info The list with range 2 to n of words is, $(call notfirst, $(MY_LIST)))
+
+notlast = $(wordlist 2,$(words $1),dummy $1)
+$(info chop the last by adding dummy to begin and use the original range, $(call notlast,$(MY_LIST)))
+
+loop1 = $(foreach wordy,$(MY_LIST),$(info $(wordy)))
+loop2 = $(foreach wordy,$(MY_LIST),$(info ./$(wordy)))
+loop3 = $(foreach wordy,$(MY_LIST),$(info $(wordy).c))
+loop4 = $(foreach wordy,$(MY_LIST),$(info $(wordy).d))
+$(info $(call loop1))
+$(info $(call loop2))
+$(info $(call loop3))
+$(info $(call loop4))
+all : ;@echo
+

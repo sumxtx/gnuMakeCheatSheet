@@ -38,3 +38,8 @@ Example:
     - Makefile14
 - Variable assigment := vs =
     - Makefile15
+    - Makefile16
+- List Manipulations
+    - Makefile17
+- User Defined Functions
+    - Makefile18
