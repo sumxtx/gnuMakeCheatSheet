@@ -1,0 +1,14 @@
+### Rebuilding when Flags Changes ###
+
+
+include signature
+
+all: ./mock_objs/foo.o ./mock_objs/bar.o
+
+./mock_objs/foo.o: ./mock_srcs/foo.c
+	$(call do,$$(COMPILE.C) -DDEBUG=$$(DEBUG)-o $$@ $$<)
+
+./mock_objs/bar.o: ./mock_srcs/bar.c
+	$(call do,$$(COMPILE.C) -o $$@ $$<)
+
+-include ./mock_signature/foo.o.sig ./mock_signature/bar.o.sig

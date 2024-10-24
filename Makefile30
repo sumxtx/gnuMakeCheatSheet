@@ -1,0 +1,14 @@
+### Rebuilding when Flags Changes ###
+
+
+all: ./mock_objs/foo.o ./mock_objs/bar.o
+
+./mock_objs/foo.o: ./mock_srcs/foo.c
+	$(COMPILE.C) -DDEBUG=$(DEBUG) -o $@ $<
+
+./mock_objs/bar.o: ./mock_srcs/bar.c
+	$(COMPILE.C) -o $@ $<
+
+# Rebuilding with 
+# make DEBUG=1 will produce
+# make: Nothing to be done for `all'.

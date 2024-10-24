@@ -1,0 +1,11 @@
+### What's Newer in 3.81 onwards ###
+
+
+#$(info text)
+#$(or arg1 arg1)# and $(and)
+#$(abspath DIR)
+$(info $(abspath ./..////))
+$(info $(realpath .././/))
+
+all: ; @true
+

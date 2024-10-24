@@ -41,5 +41,13 @@ Example:
     - [Makefile16](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile16)
 - List Manipulations
     - [Makefile17](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile17)
-- User Defined Functions
+- Functions
     - [Makefile18](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile18)
+    - [Makefile19](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile19)
+- Newer Versions Features
+    - [Makefile20](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile20)
+    - [Makefile21](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile21)
+- Building and Rebuiding
+    - [Makefile30](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile30)
+    - [Makefile31](https://github.com/sumxtx/gnuMakeCheatSheet/blob/main/Makefile31)
+    

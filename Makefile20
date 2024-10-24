@@ -1,0 +1,34 @@
+### What's Newer in 3.81 onwards ###
+
+
+#.FEATURES
+$(info $(foreach feat,$(.FEATURES),$(info $(feat))))
+
+#.INCLUDE_DIRS
+# make -I /usr/foo
+$(info $(.INCLUDE_DIRS))
+
+#.SECONDEXPANSION:
+.SECONDEXPANSION:
+
+clean: ; @echo Clean
+
+FOO = foo
+all: $$(FOO)
+all: ; @echo Making $@ from $?
+
+#else
+ifdef FOO
+	$(info FOO defined as $(FOO))
+else ifdef BAR
+	$(info BAR defined as $(BAR))
+else
+	$(info BAR not defined)
+endif
+
+bar: ; @echo Making $@
+FOO = bar
+
+# .DEFAULT_GOAL
+.DEFAULT_GOAL = all
+

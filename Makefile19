@@ -1,0 +1,29 @@
+### User-defined Functions ###
+
+
+make_date = $1/$2/$3
+paremeters = $1 $2 $3 $4 $5 $6 $7 $8 $9 $(10)
+parameters = $1,$2,$3,$4,$5,$6,$7,$8,$9,$(10)
+
+adate := $(call make_date,4,5,1999)
+parem := $(call paremeters,1,,,,,,,,,10)
+param := $(call parameters,1,,,,,,,,,10)
+
+$(info $(adate))
+$(info $(parem))
+$(info $(param))
+
+
+### Gotchas
+double_dig_paremeters = $1 $2 $3 $4 $5 $6 $7 $8 $9 $10
+dg_param := $(call double_dig_paremeters,99,98,97,96,95,94,93,92,91,90)
+$(info $(dg_param))
+
+swap = $2 $1
+$(info $(call swap,first argument,second))
+$(info $(call swap,first,argument,second))
+
+FIRST:= first,argument
+SWAPPED := $(call swap,$(FIRST),second)
+
+$(info $(SWAPPED))

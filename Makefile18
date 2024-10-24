@@ -1,0 +1,16 @@
+### Built-in Functions ###
+
+
+$(call info,message)
+map = $(foreach a,$2,$(call $1,$a))
+
+print_variable = $(info $1 ($(value $1) -> $($1)) )
+
+print_variables = $(call map,print_variable,$1)
+
+VAR1 = foo
+VAR2 = $(VAR1)
+VAR3 = $(VAR2) $(VAR1)
+
+$(call print_variables, VAR1 VAR2 VAR3)
+
